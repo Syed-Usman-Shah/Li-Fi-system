@@ -1,0 +1,31 @@
+#pip install xlrd
+import pandas as pd
+
+df = pd.read_excel('Light_data.xls')
+
+# print(df.head())
+# print(df['Illuminance (lx)'])
+all_data = df['Illuminance (lx)']
+all_data2 = list(all_data.values)
+print(all_data)
+# print(df)
+
+message = ""
+for val in all_data:
+    if val >= 0 and val <= 10:
+        message = message+"S"
+    elif val >= 20 and val <= 25:
+        message = message+"V"
+    elif val >= 30 and val <= 38:
+        message = message+"M"
+    elif val >= 60 and val <= 70:
+        message = message+"A"
+    elif val >= 85 and val <= 100:
+        message = message+"I"
+    elif val >= 101 and val <= 110:
+        message = message+"D"
+    elif val >= 175 and val <= 180:
+        message = message+"E"
+
+print("All data decoded successfully")
+print("Received data is :",message)
